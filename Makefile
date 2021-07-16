@@ -1,13 +1,15 @@
+OBJECTS = $(wildcard *.c)
 CC = gcc
 CFLAGS = -Wall -Werror
+TARGET = aboutMe
 
-all: aboutMe
+all: $(TARGET)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
 
-run: aboutMe
-	./aboutMe
+run: $(TARGET)
+	./$(TARGET)
 
 clean:
-	rm -f aboutMe
+	rm -f $(TARGET)
